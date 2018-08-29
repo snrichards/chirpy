@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.jsx',
+  entry: './client/src/index.jsx',
   devtool: 'cheap-module-source-map',
   devServer: {
     publicPath: '/dist/',
