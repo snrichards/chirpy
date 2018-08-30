@@ -15,6 +15,7 @@ const server = new ApolloServer({
   context: async () => ({
     models,
     currentUser: await models.User.findOne({ where: { username: 'testUser' } }),
+    secret: process.env.SECRET,
   }),
 });
 
