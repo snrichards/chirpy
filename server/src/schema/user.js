@@ -8,6 +8,7 @@ module.exports = gql`
 
   extend type Mutation {
     createUser(username: String!, email: String!, password: String!): Token!
+    signIn(email: String!, password: String!): Token!
   }
 
   type Token {
