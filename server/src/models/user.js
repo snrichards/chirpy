@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+
 const user = (sequelize, DataTypes) => {
   const User = sequelize.define('user', {
     username: {
@@ -28,6 +30,14 @@ const user = (sequelize, DataTypes) => {
   });
 
   User.associate = (models) => User.hasMany(models.Chirp);
+
+  User.prototype.generatePasswordHash = async function generatePasswordHash() {
+    return bcrypt.hash(this.password, 10);
+  };
+
+  User.beforeCreate(async (newUser) => {
+    newUser.password = await newUser.generatePasswordHash();
+  });
 
   return User;
 };
