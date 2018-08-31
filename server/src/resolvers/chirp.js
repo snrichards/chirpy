@@ -1,5 +1,5 @@
 const { combineResolvers } = require('graphql-resolvers');
-const { isAuthenticated } = require('./authorization');
+const { isAuthenticated, isChirpOwner } = require('./authorization');
 
 module.exports = {
   Query: {
@@ -14,6 +14,18 @@ module.exports = {
           text,
           userId: currentUser.id,
         }),
+    ),
+    updateChirp: combineResolvers(
+      isAuthenticated,
+      isChirpOwner,
+      async (parent, { id, text }, { models }) => {
+        const [, [updatedChirp]] = await models.Chirp.update(
+          { text },
+          { where: { id }, returning: true },
+        );
+
+        return updatedChirp;
+      },
     ),
   },
   Chirp: {
