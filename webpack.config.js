@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './client/src/index.jsx',
@@ -7,6 +8,13 @@ module.exports = {
     publicPath: '/dist/',
     historyApiFallback: true,
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.GRAPHQL_API_URL': JSON.stringify(
+        'http://localhost:3000/graphql',
+      ),
+    }),
+  ],
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, '/dist'),
