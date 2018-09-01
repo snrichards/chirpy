@@ -27,6 +27,12 @@ module.exports = {
         return updatedChirp;
       },
     ),
+    deleteChirp: combineResolvers(
+      isAuthenticated,
+      isChirpOwner,
+      async (parent, { id }, { models }) =>
+        models.Chirp.destroy({ where: { id } }),
+    ),
   },
   Chirp: {
     user: async (chirp, args, { models }) => models.User.findById(chirp.userId),

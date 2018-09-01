@@ -9,6 +9,7 @@ module.exports = gql`
   extend type Mutation {
     createChirp(text: String!): Chirp!
     updateChirp(id: ID!, text: String!): Chirp!
+    deleteChirp(id: ID!): Boolean!
   }
 
   type Chirp {
