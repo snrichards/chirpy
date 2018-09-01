@@ -67,7 +67,7 @@ sequelize.sync({ force: eraseDatabaseOnSync }).then(async () => {
     createTestUser();
   }
 
-  app.listen({ port: 8080 }, () => {
+  app.listen({ port: 3000 }, () => {
     console.log('listening on port 8080');
   });
 });
