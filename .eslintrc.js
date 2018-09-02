@@ -16,5 +16,6 @@ module.exports = {
     'max-len': ['error', { code: 80, ignoreTrailingComments: true }],
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
+    'react/no-unused-state': 0,
   },
 };
