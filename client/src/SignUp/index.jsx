@@ -86,7 +86,7 @@ class SignUp extends Component {
               Confirm password:
               <input
                 id="confirm-password"
-                name="confirm-password"
+                name="confirm"
                 type="password"
                 value={confirm}
                 onChange={this.handleChange}
