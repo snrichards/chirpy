@@ -12,6 +12,8 @@ import Profile from '../Profile';
 import PrivateRoute from '../PrivateRoute';
 import { isAuthenticated } from '../utils';
 import FourOhFour from '../FourOhFour';
+import UsersList from '../UsersList';
+import User from '../User';
 
 const App = () => (
   <Router>
@@ -34,7 +36,9 @@ const App = () => (
         />
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/signup" component={SignUp} />
+        <PrivateRoute exact path="/users" component={UsersList} />
         <PrivateRoute exact path="/profile" component={Profile} />
+        <PrivateRoute exact path="/user/:id" component={User} />
         <Route component={FourOhFour} />
       </Switch>
     </div>
