@@ -42,7 +42,7 @@ class SignUp extends Component {
   };
 
   render() {
-    const { username, email, password } = this.state;
+    const { username, email, password, confirm } = this.state;
     return isAuthenticated() ? (
       <Redirect to="/" />
     ) : (
@@ -58,6 +58,7 @@ class SignUp extends Component {
                 id="username"
                 name="username"
                 type="text"
+                value={username}
                 onChange={this.handleChange}
               />
             </label>
@@ -67,6 +68,7 @@ class SignUp extends Component {
                 id="email"
                 name="email"
                 type="email"
+                value={email}
                 onChange={this.handleChange}
               />
             </label>
@@ -76,6 +78,7 @@ class SignUp extends Component {
                 id="password"
                 name="password"
                 type="password"
+                value={password}
                 onChange={this.handleChange}
               />
             </label>
@@ -85,6 +88,7 @@ class SignUp extends Component {
                 id="confirm-password"
                 name="confirm-password"
                 type="password"
+                value={confirm}
                 onChange={this.handleChange}
               />
             </label>

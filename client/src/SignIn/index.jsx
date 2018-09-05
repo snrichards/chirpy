@@ -55,6 +55,7 @@ class SignIn extends Component {
                   id="email"
                   name="email"
                   type="email"
+                  value={email}
                   onChange={this.handleChange}
                 />
               </label>
@@ -64,6 +65,7 @@ class SignIn extends Component {
                   id="password"
                   name="password"
                   type="password"
+                  value={password}
                   onChange={this.handleChange}
                 />
               </label>
