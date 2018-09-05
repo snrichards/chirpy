@@ -7,8 +7,10 @@ import Navigation from '../Navigation';
 const App = () => (
   <Router>
     <div>
-      <h1>Chirpy</h1>
-      <Navigation />
+      <header>
+        <h1>Chirpy</h1>
+        <Navigation />
+      </header>
 
       <Route exact path="/signin" component={SignIn} />
       <Route exact path="/signup" component={SignUp} />
