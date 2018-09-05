@@ -24,3 +24,14 @@ export const isAuthenticated = () => {
 
   return false;
 };
+
+export const getCurrentUserId = () => {
+  const token = localStorage.getItem('chirpyToken');
+  const decoded = decode(token);
+
+  if (!decoded) {
+    return null;
+  }
+
+  return decoded.id;
+};
