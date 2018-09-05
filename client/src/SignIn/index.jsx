@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
-import { Redirect } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { isAuthenticated } from '../utils';
 
 const GET_USER = gql`
   mutation($email: String!, $password: String!) {
@@ -15,7 +17,6 @@ class SignIn extends Component {
   state = {
     email: '',
     password: '',
-    redirectToHome: false,
   };
 
   handleChange = (event) => {
@@ -30,18 +31,18 @@ class SignIn extends Component {
 
   handleSubmit = (event, signIn) => {
     event.preventDefault();
+    const { history } = this.props;
 
     signIn().then((result) => {
-      sessionStorage.setItem('chirpyToken', result.data.signIn.token);
-      this.setState({
-        redirectToHome: true,
-      });
+      localStorage.setItem('chirpyToken', result.data.signIn.token);
+      history.push('/');
     });
   };
 
   render() {
-    const { email, password, redirectToHome } = this.state;
-    return redirectToHome || sessionStorage.getItem('chirpyToken') ? (
+    const { email, password } = this.state;
+
+    return isAuthenticated() ? (
       <Redirect to="/" />
     ) : (
       <div>
@@ -75,4 +76,8 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+SignIn.propTypes = {
+  history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired,
+};
+
+export default withRouter(SignIn);
