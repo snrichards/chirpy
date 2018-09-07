@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { Redirect, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { isAuthenticated } from '../utils';
+import Input from '../Input';
 
 const SIGN_UP_USER = gql`
   mutation($username: String!, $email: String!, $password: String!) {
@@ -52,7 +53,7 @@ class SignUp extends Component {
       >
         {(signUp) => (
           <form onSubmit={(event) => this.handleSubmit(event, signUp)}>
-            <label htmlFor="username">
+            {/* <label htmlFor="username">
               Username:
               <input
                 id="username"
@@ -61,8 +62,41 @@ class SignUp extends Component {
                 value={username}
                 onChange={this.handleChange}
               />
-            </label>
-            <label htmlFor="email">
+            </label> */}
+            <Input
+              title="Username"
+              id="username"
+              name="username"
+              type="text"
+              value={username}
+              handleChange={this.handleChange}
+            />
+            <Input
+              title="Email"
+              id="email"
+              name="email"
+              type="email"
+              value={email}
+              handleChange={this.handleChange}
+            />
+            <Input
+              title="Password"
+              id="password"
+              name="password"
+              type="password"
+              value={password}
+              handleChange={this.handleChange}
+            />
+            <Input
+              title="Confirm password"
+              id="confirm-password"
+              name="confirm"
+              type="password"
+              value={confirm}
+              handleChange={this.handleChange}
+            />
+
+            {/* <label htmlFor="email">
               Email:
               <input
                 id="email"
@@ -71,8 +105,8 @@ class SignUp extends Component {
                 value={email}
                 onChange={this.handleChange}
               />
-            </label>
-            <label htmlFor="password">
+            </label> */}
+            {/* <label htmlFor="password">
               Password:
               <input
                 id="password"
@@ -81,8 +115,8 @@ class SignUp extends Component {
                 value={password}
                 onChange={this.handleChange}
               />
-            </label>
-            <label htmlFor="confirm">
+            </label> */}
+            {/* <label htmlFor="confirm">
               Confirm password:
               <input
                 id="confirm-password"
@@ -91,7 +125,7 @@ class SignUp extends Component {
                 value={confirm}
                 onChange={this.handleChange}
               />
-            </label>
+            </label> */}
             <button type="submit">Sign Up</button>
           </form>
         )}

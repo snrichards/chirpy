@@ -4,6 +4,7 @@ import { Mutation } from 'react-apollo';
 import { Redirect, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { isAuthenticated } from '../utils';
+import Input from '../Input';
 
 const GET_USER = gql`
   mutation($email: String!, $password: String!) {
@@ -49,26 +50,22 @@ class SignIn extends Component {
         <Mutation mutation={GET_USER} variables={{ email, password }}>
           {(signIn) => (
             <form onSubmit={(event) => this.handleSubmit(event, signIn)}>
-              <label htmlFor="email">
-                Email:
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={email}
-                  onChange={this.handleChange}
-                />
-              </label>
-              <label htmlFor="password">
-                Password:
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  value={password}
-                  onChange={this.handleChange}
-                />
-              </label>
+              <Input
+                title="Email"
+                id="email"
+                name="email"
+                type="email"
+                value={email}
+                handleChange={this.handleChange}
+              />
+              <Input
+                title="Password"
+                id="password"
+                name="password"
+                type="password"
+                value={password}
+                handleChange={this.handleChange}
+              />
               <button type="submit">Sign In</button>
             </form>
           )}
