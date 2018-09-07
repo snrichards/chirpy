@@ -53,16 +53,6 @@ class SignUp extends Component {
       >
         {(signUp) => (
           <form onSubmit={(event) => this.handleSubmit(event, signUp)}>
-            {/* <label htmlFor="username">
-              Username:
-              <input
-                id="username"
-                name="username"
-                type="text"
-                value={username}
-                onChange={this.handleChange}
-              />
-            </label> */}
             <Input
               title="Username"
               id="username"
@@ -95,37 +85,6 @@ class SignUp extends Component {
               value={confirm}
               handleChange={this.handleChange}
             />
-
-            {/* <label htmlFor="email">
-              Email:
-              <input
-                id="email"
-                name="email"
-                type="email"
-                value={email}
-                onChange={this.handleChange}
-              />
-            </label> */}
-            {/* <label htmlFor="password">
-              Password:
-              <input
-                id="password"
-                name="password"
-                type="password"
-                value={password}
-                onChange={this.handleChange}
-              />
-            </label> */}
-            {/* <label htmlFor="confirm">
-              Confirm password:
-              <input
-                id="confirm-password"
-                name="confirm"
-                type="password"
-                value={confirm}
-                onChange={this.handleChange}
-              />
-            </label> */}
             <button type="submit">Sign Up</button>
           </form>
         )}
