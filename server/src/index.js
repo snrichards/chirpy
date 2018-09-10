@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const { ApolloServer, AuthenticationError } = require('apollo-server-express');
 const jwt = require('jsonwebtoken');
@@ -9,6 +10,13 @@ const { models, sequelize } = require('./models');
 
 const app = express();
 app.use(cors());
+
+app.use(express.static(path.join(__dirname, '../../public')));
+app.use(express.static(path.join(__dirname, '../../dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../../public', 'index.html'));
+});
 
 const getCurrentUser = async (req) => {
   const token = req.headers['x-token'];
@@ -68,6 +76,6 @@ sequelize.sync({ force: eraseDatabaseOnSync }).then(async () => {
   }
 
   app.listen({ port: 3000 }, () => {
-    console.log('listening on port 8080');
+    console.log('listening on port 3000');
   });
 });

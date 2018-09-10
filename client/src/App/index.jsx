@@ -4,6 +4,7 @@ import {
   Route,
   Redirect,
   Switch,
+  browserHistory,
 } from 'react-router-dom';
 import SignIn from '../SignIn';
 import SignUp from '../SignUp';
@@ -16,7 +17,7 @@ import UsersList from '../UsersList';
 import User from '../User';
 
 const App = () => (
-  <Router>
+  <Router history={browserHistory}>
     <div>
       <header>
         <h1>Chirpy</h1>
