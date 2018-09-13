@@ -5,6 +5,7 @@ import {
   Redirect,
   Switch,
   browserHistory,
+  Link,
 } from 'react-router-dom';
 import SignIn from '../SignIn';
 import SignUp from '../SignUp';
@@ -15,14 +16,17 @@ import { isAuthenticated } from '../utils';
 import FourOhFour from '../FourOhFour';
 import UsersList from '../UsersList';
 import User from '../User';
+import { Header, Container } from '../Styled';
 
 const App = () => (
   <Router history={browserHistory}>
-    <div>
-      <header>
-        <h1>Chirpy</h1>
+    <Container>
+      <Header>
+        <h1>
+          <Link to="/">Chirpy</Link>
+        </h1>
         <Navigation />
-      </header>
+      </Header>
       <Switch>
         <Route
           exact
@@ -42,7 +46,7 @@ const App = () => (
         <PrivateRoute exact path="/user/:id" component={User} />
         <Route component={FourOhFour} />
       </Switch>
-    </div>
+    </Container>
   </Router>
 );
 
