@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
+import { Form } from '../Styled';
 
 const CREATE_NEW_CHIRP = gql`
   mutation($text: String!) {
@@ -50,7 +51,7 @@ class CreateChirp extends Component {
           }}
         >
           {(createChirp) => (
-            <form onSubmit={(event) => this.handleSubmit(event, createChirp)}>
+            <Form onSubmit={(event) => this.handleSubmit(event, createChirp)}>
               <textarea
                 id="chirpText"
                 name="chirpText"
@@ -58,7 +59,7 @@ class CreateChirp extends Component {
                 onChange={this.handleChange}
               />
               <button type="submit">Chirp</button>
-            </form>
+            </Form>
           )}
         </Mutation>
       </section>
