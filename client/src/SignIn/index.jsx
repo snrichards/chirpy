@@ -5,6 +5,7 @@ import { Redirect, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { isAuthenticated } from '../utils';
 import Input from '../Input';
+import { Form } from '../Styled';
 
 const GET_USER = gql`
   mutation($email: String!, $password: String!) {
@@ -49,7 +50,7 @@ class SignIn extends Component {
       <div>
         <Mutation mutation={GET_USER} variables={{ email, password }}>
           {(signIn) => (
-            <form onSubmit={(event) => this.handleSubmit(event, signIn)}>
+            <Form onSubmit={(event) => this.handleSubmit(event, signIn)}>
               <Input
                 title="Email"
                 id="email"
@@ -67,7 +68,7 @@ class SignIn extends Component {
                 handleChange={this.handleChange}
               />
               <button type="submit">Sign In</button>
-            </form>
+            </Form>
           )}
         </Mutation>
       </div>
