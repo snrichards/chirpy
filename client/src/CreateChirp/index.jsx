@@ -57,6 +57,7 @@ class CreateChirp extends Component {
                 name="chirpText"
                 value={chirpText}
                 onChange={this.handleChange}
+                placeholder="Enter chirp text here..."
               />
               <button type="submit">Chirp</button>
             </Form>

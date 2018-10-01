@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { getCurrentUserId } from '../utils';
 import CreateChirp from '../CreateChirp';
+import { ProfileTitle, List, ChirpItem } from '../Styled';
 
 const GET_CURRENT_USER = gql`
   query($id: ID!) {
@@ -28,13 +29,13 @@ const Profile = () => (
 
         return (
           <section>
-            <h2>{`${user.username}'s Profile`}</h2>
+            <ProfileTitle>My Profile</ProfileTitle>
             <CreateChirp refetch={refetch} />
-            <ul>
+            <List>
               {user.chirps.map((chirp) => (
-                <li key={chirp.id}>{chirp.text}</li>
+                <ChirpItem key={chirp.id}>{chirp.text}</ChirpItem>
               ))}
-            </ul>
+            </List>
           </section>
         );
       }}

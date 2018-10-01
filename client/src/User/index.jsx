@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
+import { ProfileTitle, List, ChirpItem } from '../Styled';
 
 const GET_USER = gql`
   query($id: ID!) {
@@ -30,12 +31,12 @@ const User = ({ match }) => (
 
       return (
         <div>
-          {user.username}
-          <ul>
+          <ProfileTitle>{user.username}</ProfileTitle>
+          <List>
             {user.chirps.map((chirp) => (
-              <li key={chirp.id}>{chirp.text}</li>
+              <ChirpItem key={chirp.id}>{chirp.text}</ChirpItem>
             ))}
-          </ul>
+          </List>
         </div>
       );
     }}

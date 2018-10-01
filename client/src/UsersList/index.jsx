@@ -2,6 +2,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Link } from 'react-router-dom';
+import { List } from '../Styled';
 
 const GET_USERS = gql`
   {
@@ -28,13 +29,13 @@ const UsersList = () => (
       }
 
       return (
-        <ul>
+        <List>
           {users.map((user) => (
             <li data-id={user.id} key={user.id}>
               <Link to={`/user/${user.id}`}>{user.username}</Link>
             </li>
           ))}
-        </ul>
+        </List>
       );
     }}
   </Query>
